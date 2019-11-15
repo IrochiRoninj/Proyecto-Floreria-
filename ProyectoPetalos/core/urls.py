@@ -5,7 +5,7 @@ from .views import *
 urlpatterns = [
     path('',index,name='HOME'), #renderizar pag index
     path('galeria/',galeria,name='GALE'),
-     path('formulario/',formulario,name='FORMU'),
+    path('formulario/',formulario,name='FORMU'),
     path('quien_somos/',quienes_somos,name='QUIEN'),
     path('categoria/',categoria,name='CATE'),
     path('caja/',caja,name='CAJA'),
