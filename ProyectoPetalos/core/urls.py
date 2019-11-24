@@ -7,9 +7,9 @@ urlpatterns = [
     path('galeria/',galeria,name='GALE'),
     path('formulario/',formulario,name='FORMU'),
     path('quien_somos/',quienes_somos,name='QUIEN'),
-    path('categoria/',categoria,name='CATE'),
-    path('caja/',caja,name='CAJA'),
-    path('florero/',florero,name='FLOR'),
-    path('novia_y_eventos/',novia_y_eventos,name='NYE'),
     path('cerrar_sesion',cerrar_sesion,name='CERRAR'),
+    path('eliminar_flor/<id>/',eliminar_flor,name='ELIMINAR'),
+    path('login/',login,name='LOGIN'),
+    path('login_iniciar/',login_iniciar,name='LOGIN_INICIAR'),
+    path('cerrar_sesion/',cerrar_sesion,name='CERRAR_SESION'),
 ]
