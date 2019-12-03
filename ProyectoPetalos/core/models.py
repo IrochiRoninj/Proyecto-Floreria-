@@ -1,10 +1,7 @@
 from django.db import models
 
 # Create your models here.
-  def __str__(self):
-        return self.name
-
-
+ 
 class Flores(models.Model):
     fotografia=models.ImageField(upload_to="flores",null=True)
     name=models.CharField(max_length=100, primary_key=True)
