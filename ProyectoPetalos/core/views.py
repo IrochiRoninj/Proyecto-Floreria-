@@ -56,3 +56,40 @@ def login_iniciar(request):
 def cerrar_sesion(request):
     logout(request)
     return HttpResponse("<script>alert('cerro sesion');window.location.href='/';</script>")
+
+@login_required(login_url='/login/')
+def agregar_carro(request, id):
+    flor=Flores.objects.filter(name__contains=id)
+    precio=Flores.precio
+    sesion=request.session.get("carro","")
+    arr=sesion.split(";")
+    arr2=''
+    sw=0
+    cant=1
+    for f in arr:
+        flo=f.split(":")        
+        if flo[0]==id:
+            cant=int(flo[1])+1
+            sw=1
+            arr2=arr2+str(flo[0])+":"+str(cant)+":"+str(precio)+";"            
+        elif not flo[0]=="":
+            cant=flo[1]
+            arr2=arr2+str(flo[0])+":"+str(cant)+":"+str(precio)+";"
+
+    if sw==0:
+        arr2=arr2+str(id)+":"+str(1)+":"+str(precio)+";"
+    request.session["carro"]=arr2
+    flores=Flores.objects.all()
+    msg='Agrego Flor'
+    return render(request,'core/galeria.html',{'listflores':flores,'msg':msg})
+
+@login_required(login_url='/login/')
+def carrito(request):
+    lista=request.session.get("carro","")
+    arr=lista.split(";")
+    return render(request,"core/carrito.html",{'lista':arr})
+
+def vacio_carrito(request):
+    request.session["carro"]=""
+    lista=request.session.get("carro","")
+    return render(request,"core/carrito.html",{'lista':lista})

@@ -12,4 +12,6 @@ urlpatterns = [
     path('login/',login,name='LOGIN'),
     path('login_iniciar/',login_iniciar,name='LOGIN_INICIAR'),
     path('cerrar_sesion/',cerrar_sesion,name='CERRAR_SESION'),
+    path('carrito/',carrito,name='CARRITO'),
+    path('vaciar_carrito/',vacio_carrito,name='VACIARCARRITO'),
 ]
