@@ -1,5 +1,12 @@
-{% extends "core/base.html" %} {% block titulo %} Galeria de Peliculas - Cine Romeo {% endblock titulo %} {% load static %} {% block contenido %}
+{% extends "core/base.html" %}
 
+{% block titulo %} 
+Galeria de Peliculas - Cine Romeo 
+{% endblock titulo %}
+
+{% load static %}
+
+{% block contenido %}
 
 <div>
     <form id="formulario" action="" method="POST" enctype="multipart/form-data" style="margin-right: 100px;">
@@ -14,9 +21,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>valor</td>
+                    <td>Precio</td>
                     <td>
-                        <input type="number" name="txtValor">
+                        <input type="number" name="txtPrecio">
                     </td>
                 </tr>
                 <tr>

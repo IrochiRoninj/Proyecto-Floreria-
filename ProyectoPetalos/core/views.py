@@ -19,10 +19,27 @@ def galeria(request):
 def quienes_somos(request):
     return render(request,'core/quienes_somos.html')    
 
-@login_required(login_url='/login/')
+login_required(login_url='/login/')
 def formulario(request):
-    return render(request,'core/formulario.html')
-  
+    flor=Flores.objects.all()
+    if request.POST:
+        nomflor=request.POST.get("txtNombreFlor")
+        precio=request.POST.get("txtpreacio")
+        descripcion=request.POST.get("txtDescripcion")
+        categoria=request.POST.get("cboCategoria")
+        obj_flores=Flores.objects.get(name=flor)
+        imagen=request.FILES.get("txtImagen")
+        flor=Flores(
+            name=nomflor,
+            precio=precio,
+            descripcion=descripcion,
+            categoria=obj_flores,
+            imagen=imagen
+        )
+        flor.save() 
+        return render(request,'core/formulario.html',{'lista':flor,'msg':'grabo','sw':True})
+    return render(request,'core/formulario.html',{'lista':flor})
+
 def cerrar_sesion(request):
     return render(request,'core/login')    
 
