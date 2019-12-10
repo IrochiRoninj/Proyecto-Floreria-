@@ -14,33 +14,41 @@ def index(request):
 @login_required(login_url='/login/')
 def galeria(request):
     flor=Flores.objects.all()
-    return render(request,'core/galeria.html',{'listaflor':flor})  
+    return render(request,'core/galeria.html',{'lista':flor})  
 
 @login_required(login_url='/login/')
 def quienes_somos(request):
     return render(request,'core/quienes_somos.html')    
 
-login_required(login_url='/login/')
+@login_required(login_url='/login/')
 def formulario2(request):
-    flores=Flores.objects.all()
+    
     if request.POST:
         nomflor=request.POST.get("txtNombreFlor")
-        precio=request.POST.get("txtpreacio")
+        precio=request.POST.get("txtPrecio")
         descripcion=request.POST.get("txtDescripcion")
-        categoria=request.POST.get("cboCategoria")
-        obj_flores=Flores.objects.get(name=categoria)
+        esta=request.POST.get("txtEstado")
+        sto=request.POST.get("txtStock")
+        if esta=='on':
+            es=True
+        else:
+            es=False
         imagen=request.FILES.get("txtImagen")
         flor=Flores(
             name=nomflor,
             precio=precio,
             descripcion=descripcion,
-            categoria=obj_flores,
-            imagen=imagen
+            estado=es,
+            imagen=imagen,
+            stock=sto
         )
-        flor.save() 
+        flor.save()
+        flores=Flores.objects.all() 
         return render(request,'core/formulario2.html',{'lista':flores,'msg':'grabo','sw':True})
+    flores=Flores.objects.all()
     return render(request,'core/formulario2.html',{'lista':flores})
 
+@login_required(login_url='/login/')
 def formulario (request):
     mensaje=''
     sw=False
@@ -56,7 +64,7 @@ def formulario (request):
             OPI.save()
             mensaje='Enviado'    
             sw=True
-    opinion=Opinion.objects.all()# select * from categoria
+    opinion=Opinion.objects.all()
     return render(request,'core/formulario.html',{'lista':opinion,'msg':mensaje,'sw':True})
 
 @login_required(login_url='/login/')
@@ -113,7 +121,7 @@ def agregar_carro(request, id):
     request.session["carro"]=arr2
     flores=Flores.objects.all()
     msg='Agrego Flor'
-    return render(request,'core/galeria.html',{'listflores':flores,'msg':msg})
+    return render(request,'core/galeria.html',{'lista':flores,'msg':msg})
 
 @login_required(login_url='/login/')
 def carrito(request):

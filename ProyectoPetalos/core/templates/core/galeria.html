@@ -73,23 +73,24 @@
                 <a href="#" class="card-link">Añadir al Carrito</a>
             </div>
         </div>    
-    </div>
-</div>
-
-{% for p in listflores %}
-<div class="{% static 'core/css/estilos.css' %}">
-    <h3>{{f.name}}</h3>
-    <img src="{{ f.imagen.url }}">
-    <p>{{f.descripcion}} </p>
-    <div>Ver Pelicula</div>
-    <div>
-        <a href="{% url 'ELIMINAR' f.name %}">Eliminar</a>
-    </div>
-    <div>
-        <a href="{% url 'AGREGAR_CARRO' f.name %}">Agregar a Carro</a>
-    </div>
-</div>
+   
+{% for f in lista %}
+        <div class="card" style="width: 18rem; height: 10rem;">
+            <img src="{{f.imagen.url}}" style="width: 280px;height: 150px;" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{f.name}}</h5>
+                <p class="card-text">{{f.descripcion}} </p>
+                <h5>
+                    <p style="text-align: center;">{{f.precio}}</p>
+                </h5>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'AGREGAR_CARRO' f.name %}" class="card-link">Añadir al Carrito</a>
+            </div>
+        </div>
 {% endfor %}
+ </div>
+</div>
 
 <h1>{{msg}}</h1>
 

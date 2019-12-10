@@ -1,9 +1,9 @@
 from django.db import models
  
 class Flores(models.Model):
-    fotografia=models.ImageField(upload_to="flores",null=True)
+    imagen=models.ImageField(upload_to="flores",null=True)
     name=models.CharField(max_length=100, primary_key=True)
-    valor=models.IntegerField()
+    precio=models.IntegerField()
     descripcion=models.TextField()
     estado=models.BooleanField()
     stock=models.IntegerField()

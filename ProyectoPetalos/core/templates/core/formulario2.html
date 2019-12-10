@@ -15,41 +15,37 @@ Formulario de ingreso de Flores - Floreria Petalos
         <centet>
             <table border="1" class="table table-responsive table-bordered ">
                 <tr>
-                    <td>Nombre de la flor:</td>
+                    <td style="font-size:20px;">Nombre de la flor:</td>
                     <td>
-                        <input type="text" name="txtNombreFlor">
+                        <input type="text" name="txtNombreFlor" id="txtNomFlor">
                     </td>
                 </tr>
                 <tr>
-                    <td>Precio</td>
+                    <td style="font-size:20px;">Precio</td>
                     <td>
-                        <input type="number" name="txtPrecio">
+                        <input type="number" name="txtPrecio" id="txtPrecio" max="200000" min="10000">
                     </td>
                 </tr>
                 <tr>
-                    <td>Descripcion de la flor</td>
+                    <td style="font-size:20px;">Descripcion de la flor</td>
                     <td>
                         <textarea name="txtDescripcion"></textarea>
                     </td>
                 </tr>
                 <tr>
-                    <td>Estado:</td>
+                    <td style="font-size:20px;">Disponible:</td>
                     <td>
-                        <select name="cboCategoria">
-                             {% for datos in lista %}
-                             <option>{{datos.name}}</option>
-                             {% endfor %}
-                            </select>
+                        <input type="radio" name="txtEstado">
                     </td>
                 </tr>
                 <tr>
-                    <td>Seleccione imagen:</td>
+                    <td style="font-size:20px;">Seleccione imagen:</td>
                     <td>
                         <input type="file" name="txtImagen">
                     </td>
                 </tr>
                 <tr>
-                    <td>Stock:</td>
+                    <td style="font-size:20px;">Stock:</td>
                     <td>
                         <input type="number" name="txtStock">
                     </td>
