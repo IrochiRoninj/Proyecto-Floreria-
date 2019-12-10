@@ -1,0 +1,77 @@
+{% extends "core/base.html" %}
+
+{% block titulo %} 
+Formulario de ingreso de Flores - Floreria Petalos
+{% endblock titulo %}
+
+{% load static %}
+ 
+{% block contenido %}
+
+ <h1 class="text-center display-4 my-4 ">Formulario de ingreso de Flores</h1>
+<div class="row justify-content-center">
+    <form id="formulario" action="" method="POST" enctype="multipart/form-data" style="align-items: center;" class="form-responsive">
+        {% csrf_token %}
+        <centet>
+            <table border="1" class="table table-responsive table-bordered ">
+                <tr>
+                    <td>Nombre de la flor:</td>
+                    <td>
+                        <input type="text" name="txtNombreFlor">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Precio</td>
+                    <td>
+                        <input type="number" name="txtPrecio">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Descripcion de la flor</td>
+                    <td>
+                        <textarea name="txtDescripcion"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Estado:</td>
+                    <td>
+                        <select name="cboCategoria">
+                             {% for datos in lista %}
+                             <option>{{datos.name}}</option>
+                             {% endfor %}
+                            </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Seleccione imagen:</td>
+                    <td>
+                        <input type="file" name="txtImagen">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stock:</td>
+                    <td>
+                        <input type="number" name="txtStock">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Guardar">
+                    </td>
+                </tr>
+            </table>
+        </centet>
+    </form>
+    {% if sw %}
+    <script>
+        setTimeout(function() {
+            document.getElementById("mensaje").innerHTML = ''
+        }, 2000)
+    </script>
+    <div id="mensaje">
+        <b>{{msg}}</b>
+    </div>
+
+    {% endif %}
+</div>
+{% endblock contenido %}

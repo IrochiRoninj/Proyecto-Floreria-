@@ -1,6 +1,6 @@
 {% extends "core/base.html" %} {% block titulo %} Login de Acceso {% endblock titulo %} {% load static %} {% block contenido %}
 
-<h1 class="text-center display-6 my-6 ">Formulario de login</h1>
+<h1 class="text-center display-6 my-6 ">Iniciar Sesión</h1>
 <form name="formulario" method="POST" action="{% url 'LOGIN_INICIAR' %}" style="margin-left: 40%;">
     <img src="{% static 'core/img/login.png' %}" style="width: 250px;height: 180px; padding: 10px; margin: 12px;"> {% csrf_token %}
     <table border="1">

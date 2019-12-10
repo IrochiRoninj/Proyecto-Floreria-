@@ -1,77 +1,59 @@
-{% extends "core/base.html" %}
+{% extends "core/base.html" %} {% block titulo %} Formulario de Opiniones - Floreria Petalos {% endblock titulo %} {% load static %} {% block contenido %}
 
-{% block titulo %} 
-Galeria de Peliculas - Cine Romeo 
-{% endblock titulo %}
+<h1 class="text-center display-4 my-4 ">Tú Opinión Nos Interesa</h1>
+<div class="row justify-content-center">
 
-{% load static %}
-
-{% block contenido %}
-
-<div>
-    <form id="formulario" action="" method="POST" enctype="multipart/form-data" style="margin-right: 100px;">
+    <form id="formulario" action="" method="POST" style="align-items: center;" class="form-responsive">
         {% csrf_token %}
-        <centet>
-            <h1 class="text-center display-4 my-4 ">Formulario de ingreso de Flores</h1>
-            <table border="1">
-                <tr>
-                    <td>Nombre de la flor:</td>
-                    <td>
-                        <input type="text" name="txtNombreFlor">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Precio</td>
-                    <td>
-                        <input type="number" name="txtPrecio">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Descripcion de la flor</td>
-                    <td>
-                        <textarea name="txtDescripcion"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Estado:</td>
-                    <td>
-                        <select name="cboCategoria">
-                             {% for datos in lista %}
-                             <option>{{datos.name}}</option>
-                             {% endfor %}
-                            </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Seleccione imagen:</td>
-                    <td>
-                        <input type="file" name="txtImagen">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Stock:</td>
-                    <td>
-                        <input type="number" name="txtStock">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" value="Guardar">
-                    </td>
-                </tr>
-            </table>
-        </centet>
+        <table border="2" class="table table-responsive table-bordered">
+            <tr>
+                <td style="font-size:20px; ">Nombre Articulo</td>
+                <td>
+                    <input style="width: 350px;" type="text" name="txtNomFlor ">
+                </td>
+            </tr>
+            <tr>
+                <td>Opinion</td>
+                <td>
+                    <input style="width: 350px;" textarea name="txtOpinion ">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="width: 200px;" type="submit" value="Enviar " name="Accion ">
+                </td>
+            </tr>
+        </table>
     </form>
     {% if sw %}
     <script>
         setTimeout(function() {
-            document.getElementById("mensaje").innerHTML = ''
+            document.getElementById("mensaje ").innerHTML = ''
         }, 2000)
     </script>
-    <div id="mensaje">
+    <div id="mensaje " style="text-align: center; font-size: 24px; ">
         <b>{{msg}}</b>
     </div>
 
     {% endif %}
+</div>
+
+<hr>
+<div class="table-responsive ">
+    <h2 class="text-center display-4 my-4 ">Lista de Opiniones</h2>
+    <form id="formulari " action=" " method="POST">
+        <table border="1" class="table">
+            <tr>
+                <td style="font-size:20px; ">Nombre Articulo</td>
+                <td style="font-size:20px; ">Opinion</td>
+            </tr>
+            {% for opinon in lista %}
+            <tr>
+                <td>{{opinon.name}}</td>
+                <td>{{opinon.opinion}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
 </div>
 {% endblock contenido %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Flores
+from .models import Opinion
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,logout,login as auth_login
 from django.contrib.auth.decorators import login_required
@@ -20,14 +21,14 @@ def quienes_somos(request):
     return render(request,'core/quienes_somos.html')    
 
 login_required(login_url='/login/')
-def formulario(request):
-    flor=Flores.objects.all()
+def formulario2(request):
+    flores=Flores.objects.all()
     if request.POST:
         nomflor=request.POST.get("txtNombreFlor")
         precio=request.POST.get("txtpreacio")
         descripcion=request.POST.get("txtDescripcion")
         categoria=request.POST.get("cboCategoria")
-        obj_flores=Flores.objects.get(name=flor)
+        obj_flores=Flores.objects.get(name=categoria)
         imagen=request.FILES.get("txtImagen")
         flor=Flores(
             name=nomflor,
@@ -37,11 +38,26 @@ def formulario(request):
             imagen=imagen
         )
         flor.save() 
-        return render(request,'core/formulario.html',{'lista':flor,'msg':'grabo','sw':True})
-    return render(request,'core/formulario.html',{'lista':flor})
+        return render(request,'core/formulario2.html',{'lista':flores,'msg':'grabo','sw':True})
+    return render(request,'core/formulario2.html',{'lista':flores})
 
-def cerrar_sesion(request):
-    return render(request,'core/login')    
+def formulario (request):
+    mensaje=''
+    sw=False
+    if request.POST:
+        accion=request.POST.get("Accion")
+        if accion=="Enviar":
+            name=request.POST.get("txtNomFlor")
+            opi=request.POST.get("txtOpinion")
+            OPI=Opinion(
+                name=name,
+                opinion=opi
+            )
+            OPI.save()
+            mensaje='Enviado'    
+            sw=True
+    opinion=Opinion.objects.all()# select * from categoria
+    return render(request,'core/formulario.html',{'lista':opinion,'msg':mensaje,'sw':True})
 
 @login_required(login_url='/login/')
 def eliminar_flor(request,id):
@@ -67,7 +83,6 @@ def login_iniciar(request):
         if usu is not None and usu.is_active:
             auth_login(request,usu)
             return render(request,'core/index.html')
-        msg=u
     return render(request,'core/login.html',{'msg':msg})
 
 def cerrar_sesion(request):
