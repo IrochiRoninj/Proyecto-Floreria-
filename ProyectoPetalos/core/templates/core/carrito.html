@@ -8,25 +8,38 @@
 
 {% block contenido %}
 
-    <h1 class="text-center display-4 my-4 "> Lista de Flores </h1>
-    <table border="2" >
+<!-- sector del menu -->
+<h2>Carrito de Compras</h2>
+<center>
+<div class="container">
+    <table border="1">
         <tr>
-            <td>Nombre de la flor</td>
-        <tr>
-            <td>Cantidad</td>
-        </tr>  
-        <tr>  
+            <td>Nombre</td>
             <td>Precio</td>
+            <td>Cantidad</td>
+            <td>Total</td>
         </tr>
-        {% for p in lista %}
+        {% for f in x %}
         <tr>
-            <td>{{p}}</td>
-            <td></td>
-            <td></td>
+            <td>{{f.nombre}}</td>
+            <td>{{f.precio}}</td>
+            <td>{{f.cantidad}}</td>
+            <td>{{f.total}}</td>
+            <td>
+                <input type="button" value="+" onclick="javascript:location.href='{% url 'CARRO_MAS' f.nombre %}'" >
+                <input type="button" value="-" onclick="javascript:location.href='{% url 'CARRO_MENOS' f.nombre %}'" >
+            </td>
         </tr>
         {% endfor %}
+        <tr>
+            <td colspan="3">Total</td>  
+            <td>{{total}}</td>  
+            <td>
+                <input type="button" value="Grabar Carro" onclick="javascript:location.href='{% url 'GRABAR_CARRO' %}'" >
+            </td>
+        </tr>
     </table>
-
-
-
+</div>
+{{mensaje}}
+</center>
 {% endblock contenido %}
