@@ -3,9 +3,7 @@ class elemento:
     nombre=""
     precio=0
     cantidad=0
-
-
-
+    
     def __init__(self,codigo,nombre,precio,cantidad):
         self.cod=codigo
         self.nombre=nombre
@@ -18,8 +16,7 @@ class elemento:
             'nombre': self.nombre,
             'precio': str(self.precio),
             'cantidad': str(self.cantidad),
-            'total': str(self.total())
+            'total':str(self.total())
         }
-
     def total(self):
         return str(int(self.precio)*int(self.cantidad))
