@@ -41,11 +41,6 @@
                 {% endif %}   
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'FORMU' %}">Opiniones</a>
-                </li>
-                {% endif %}
-                {% if user.is_authenticated %}
-                <li class="nav-item">
                     <a class="nav-link" href="{% url 'QUIEN' %}">Quienes Somos</a>
                 </li>
                 {% endif %}
@@ -55,16 +50,14 @@
                     <a class="nav-link" href="{% url 'CARRITO' %}">Carrito de Compras</a>
                 </li>
                 {% endif %}
-                {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
+            </ul>
+            {% if user.is_authenticated %}
+            <form class="form-inline my-2 my-lg-0">
+               <li class="nav-item dropdown">
                     <a class="nav-link" href="{% url 'CERRAR' %}">Cerrar Sesion</a>
                 </li>
-                {% endif %}
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
+            {% endif %}}
         </div>
     </nav>
     <div>
@@ -72,7 +65,32 @@
     <img src="{% static 'core/img/logo-floreria.png' %}" alt="" style="width: 200px">
 </div>
 
-    {% block contenido %} {% endblock contenido %}
+    {% block contenido %} 
+    
+    {% endblock contenido %}
+<div>
+
+
+<h1>
+
+</h1>
+
+<h1>
+
+</h1>
+
+</div>
+    <!-- Footer -->
+<footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Floreria Petalos:
+        <a href="{% url 'HOME' %}"> floreriachilepetalos.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 
 
 </body>

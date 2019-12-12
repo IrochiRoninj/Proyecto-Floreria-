@@ -18,11 +18,7 @@ def galeria(request):
     return render(request,'core/galeria.html',{'lista':flor})  
 
 @login_required(login_url='/login/')
-def quienes_somos(request):
-    return render(request,'core/quienes_somos.html')    
-
-@login_required(login_url='/login/')
-def formulario2(request):
+def formulario(request):
     
     if request.POST:
         nomflor=request.POST.get("txtNombreFlor")
@@ -46,39 +42,12 @@ def formulario2(request):
         flor.save()
         mensaje='Enviado'
         flores=Flores.objects.all() 
-        return render(request,'core/formulario2.html',{'lista':flores,'msg':'Se Guardo','sw':True})
-    return render(request,'core/formulario2.html')
+        return render(request,'core/formulario.html',{'lista':flores,'msg':'Se Guardo','sw':True})
+    return render(request,'core/formulario.html')
 
 @login_required(login_url='/login/')
-def formulario (request):
-    mensaje=''
-    sw=False
-    if request.POST:
-        accion=request.POST.get("Accion")
-        if accion=="Enviar":
-            name=request.POST.get("txtNomFlor")
-            opi=request.POST.get("txtOpinion")
-            OPI=Opinion(
-                name=name,
-                op=opi
-            )
-            OPI.save()
-            mensaje='Enviado'    
-            sw=True
-    opinion=Opinion.objects.all()
-    return render(request,'core/formulario.html',{'lista':opinion,'msg':mensaje,'sw':True})
-
-@login_required(login_url='/login/')
-def eliminar_flor(request,id):
-    mensaje=''
-    flor=Flores.objects.get(name=id)
-    try:
-        flor.delete()
-        mensaje='Elimino Flor'
-    except:
-        mensaje='No se pudo eliminar'
-    flores=Flores.objects.all()
-    return render(request,'core/galeria.html',{'lista':flores,'msg':mensaje})
+def quienes_somos(request):
+    return render(request,'core/quienes_somos.html')    
 
 def login(request):
     return render(request,'core/login.html')
@@ -100,6 +69,7 @@ def login_iniciar(request):
 def cerrar_sesion(request):
     logout(request)
     return HttpResponse("<script>alert('cerro sesion');window.location.href='/';</script>")
+
 
 @login_required(login_url='/login/')
 def carrito(request):
@@ -196,5 +166,6 @@ def carro_compras_menos(request,id):
     x=request.session["carritox"]    
     return render(request,'core/carrito.html',{'x':x,'total':suma})    
 
+#####################################################################
 def isset(variable):
 	return variable in locals() or variable in globals()    
