@@ -50,6 +50,11 @@
                     <a class="nav-link" href="{% url 'CARRITO' %}">Carrito de Compras</a>
                 </li>
                 {% endif %}
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'VACIARCARRITO' %}">Vaciar Carrito</a>
+                </li>
+                {% endif %}
             </ul>
             {% if user.is_authenticated %}
             <form class="form-inline my-2 my-lg-0">

@@ -73,11 +73,11 @@ def cerrar_sesion(request):
 
 @login_required(login_url='/login/')
 def carrito(request):
-    lista=request.session["carritox"]
+    x=request.session["carritox"]
     suma=0
-    for item in lista:
+    for item in x:
         suma=suma+int(item["total"])
-    return render(request,"core/carrito.html",{'lista':lista,'total':suma})
+    return render(request,"core/carrito.html",{'x':x,'total':suma})
 
 @login_required(login_url='/login/')
 def carro_compras(request,id):
@@ -159,12 +159,17 @@ def carro_compras_menos(request,id):
         if item["nombre"]==f.name:
             cantidad=int(cantidad)-1
         ne=elemento(1,item["nombre"],item["precio"],cantidad)
-        suma=suma+int(ne.total)
+        suma=suma+int(ne.total())
         clon.append(ne.toString())
     x=clon    
     request.session["carritox"]=x
     x=request.session["carritox"]    
     return render(request,'core/carrito.html',{'x':x,'total':suma})    
+
+def vacio_carrito(request):
+    request.session["carro"]=""
+    x=request.session.get("carro","")
+    return render(request,"core/carrito.html",{'x':x})
 
 #####################################################################
 def isset(variable):

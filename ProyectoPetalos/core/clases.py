@@ -10,7 +10,7 @@ class elemento:
         self.precio=precio
         self.cantidad=cantidad
 
-    def ToString(self):
+    def toString(self):
         return {
             'codigo': str(self.cod),
             'nombre': self.nombre,
