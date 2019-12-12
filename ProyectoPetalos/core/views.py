@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from .models import Flores
-from .models import Opinion
-from .models import Boleta
+from .models import Flores,Opinion,Boleta
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,logout,login as auth_login
 from django.contrib.auth.decorators import login_required
@@ -46,10 +44,10 @@ def formulario2(request):
             stock=sto
         )
         flor.save()
+        mensaje='Enviado'
         flores=Flores.objects.all() 
-        return render(request,'core/formulario2.html',{'lista':flores,'msg':'grabo','sw':True})
-    flores=Flores.objects.all()
-    return render(request,'core/formulario2.html',{'lista':flores})
+        return render(request,'core/formulario2.html',{'lista':flores,'msg':'Se Guardo','sw':True})
+    return render(request,'core/formulario2.html')
 
 @login_required(login_url='/login/')
 def formulario (request):
@@ -62,7 +60,7 @@ def formulario (request):
             opi=request.POST.get("txtOpinion")
             OPI=Opinion(
                 name=name,
-                opinion=opi
+                op=opi
             )
             OPI.save()
             mensaje='Enviado'    

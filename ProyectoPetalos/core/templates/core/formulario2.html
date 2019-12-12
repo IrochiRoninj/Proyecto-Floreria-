@@ -1,14 +1,6 @@
-{% extends "core/base.html" %}
+{% extends "core/base.html" %} {% block titulo %} Formulario de ingreso de Flores - Floreria Petalos {% endblock titulo %} {% load static %} {% block contenido %}
 
-{% block titulo %} 
-Formulario de ingreso de Flores - Floreria Petalos
-{% endblock titulo %}
-
-{% load static %}
- 
-{% block contenido %}
-
- <h1 class="text-center display-4 my-4 ">Formulario de ingreso de Flores</h1>
+<h1 class="text-center display-4 my-4 ">Formulario de ingreso de Flores</h1>
 <div class="row justify-content-center">
     <form id="formulario" action="" method="POST" enctype="multipart/form-data" style="align-items: center;" class="form-responsive">
         {% csrf_token %}
@@ -52,7 +44,7 @@ Formulario de ingreso de Flores - Floreria Petalos
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" value="Guardar">
+                        <input type="submit" value="Enviar">
                     </td>
                 </tr>
             </table>

@@ -13,7 +13,7 @@ class Flores(models.Model):
         
 class Opinion(models.Model):
     name=models.CharField(max_length=100,primary_key=True)
-    opinion=models.TextField()
+    op=models.TextField()
 
     def __str__(self):
         return self.name

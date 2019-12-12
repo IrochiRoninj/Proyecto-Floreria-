@@ -29,7 +29,7 @@
     <script>
         setTimeout(function() {
             document.getElementById("mensaje ").innerHTML = ''
-        }, 2000)
+        },2000)
     </script>
     <div id="mensaje " style="text-align: center; font-size: 24px; ">
         <b>{{msg}}</b>
@@ -44,13 +44,13 @@
     <form id="formulari " action=" " method="POST">
         <table border="1" class="table">
             <tr>
-                <td style="font-size:20px; ">Nombre Articulo</td>
-                <td style="font-size:20px; ">Opinion</td>
+                <td>Nombre Articulo</td>
+                <td>Opinion</td>
             </tr>
-            {% for opinon in lista %}
+            {% for opinion in lista %}
             <tr>
-                <td>{{opinon.name}}</td>
-                <td>{{opinon.opinion}}</td>
+                <td>{{opinion.name}}</td>
+                <td>{{opinion.op}}</td>
             </tr>
             {% endfor %}
         </table>
