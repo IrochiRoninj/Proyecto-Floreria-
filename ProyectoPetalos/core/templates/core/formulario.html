@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" value="Guardar">
+                        <input class="btn btn-success" type="submit" value="Guardar">
                     </td>
                 </tr>
             </table>
@@ -56,10 +56,9 @@
             document.getElementById("mensaje").innerHTML = ''
         }, 2000)
     </script>
-    <div id="mensaje">
-        <b>{{msg}}</b>
-    </div>
-
     {% endif %}
+</div>
+<div class="alert alert-primary" role="alert" id="mensaje">
+    <b style="text-align: center;">{{msg}}</b>
 </div>
 {% endblock contenido %}

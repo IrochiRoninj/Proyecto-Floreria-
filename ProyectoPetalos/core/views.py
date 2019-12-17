@@ -12,6 +12,10 @@ from .clases import elemento
 def index(request):
     return render(request,'core/index.html')
 
+def registro_usuario (request):
+    
+    return render(request,'core/registrar.html')
+
 @login_required(login_url='/login/')
 def galeria(request):
     flor=Flores.objects.all()
@@ -63,7 +67,7 @@ def login_iniciar(request):
         request.session["carrito"] = []
         if usu is not None and usu.is_active:
             auth_login(request,usu)
-            return render(request,'core/index.html')
+            return render(request,'core/index.html',{'msg':'entro'})
     return render(request,'core/login.html',{'msg':msg})
 
 def cerrar_sesion(request):

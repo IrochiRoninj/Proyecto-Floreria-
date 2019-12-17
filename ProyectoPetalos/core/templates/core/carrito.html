@@ -1,45 +1,38 @@
-{% extends "core/base.html" %}
-
-{% block titulo %}
-    Carrito de Compras - Floreria Petalos
-{% endblock titulo %}
-
-{% load static %}
-
-{% block contenido %}
+{% extends "core/base.html" %} {% block titulo %} Carrito de Compras - Floreria Petalos {% endblock titulo %} {% load static %} {% block contenido %}
 
 <!-- sector del menu -->
 <h1 class="text-center display-4 my-4 ">Carrito de Compras</h1>
-<center>
-<div class="container">
-    <table border="1">
-        <tr>
-            <td>Nombre</td>
-            <td>Precio</td>
-            <td>Cantidad</td>
-            <td>Total</td>
-        </tr>
-        {% for f in x %}
-        <tr>
-            <td>{{f.nombre}}</td>
-            <td>{{f.precio}}</td>
-            <td>{{f.cantidad}}</td>
-            <td>{{f.total}}</td>
-            <td>
-                <input type="button" value="+" onclick="javascript:location.href='{% url 'CARRO_MAS' f.nombre %}'" >
-                <input type="button" value="-" onclick="javascript:location.href='{% url 'CARRO_MENOS' f.nombre %}'" >
-            </td>
-        </tr>
-        {% endfor %}
-        <tr>
-            <td colspan="3">Total</td>  
-            <td>{{total}}</td>  
-            <td>
-                <input type="button" value="Grabar Carro" onclick="javascript:location.href='{% url 'GRABAR_CARRO' %}'" >
-            </td>
-        </tr>
-    </table>
-</div>
-{{mensaje}}
+<center style="padding: 25px;">
+    <div class="container">
+        <table border="1">
+            <tr>
+                <td>Nombre</td>
+                <td>Precio</td>
+                <td>Cantidad</td>
+                <td>Total</td>
+            </tr>
+            {% for f in x %}
+            <tr>
+                <td>{{f.nombre}}</td>
+                <td>{{f.precio}}</td>
+                <td>{{f.cantidad}}</td>
+                <td>{{f.total}}</td>
+                <td>
+                    <input class="btn btn-success" type="button" value="+" onclick="javascript:location.href='{% url 'CARRO_MAS' f.nombre %}'">
+                    <input class="btn btn-danger" type="button" value="-" onclick="javascript:location.href='{% url 'CARRO_MENOS' f.nombre %}'">
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="3">Total</td>
+                <td>{{total}}</td>
+                <td>
+                    <input class="btn btn-dark" type="button" value="Comprar" onclick="javascript:location.href='{% url 'GRABAR_CARRO' %}'">
+                    <input class="btn btn-dark" type="button" value="Vaciar Carrito" onclick="javascript:location.href='{% url 'VACIARCARRITO' %}'">
+                </td>
+            </tr>
+        </table>
+    </div>
+    {{mensaje}}
 </center>
 {% endblock contenido %}

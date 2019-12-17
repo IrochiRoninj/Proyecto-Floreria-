@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+{% block titulo %} 
+Registro Usuarios - Floreria Petalos
+{% endblock titulo %}
+
+{% load static %}
+
+{% block contenido %}
+
+<h1 class="text-center display-6 my-6 ">Registro de Usuarios</h1>
+<form action="" method="POST">
+    {% csrt_token%}
+
+    <table>
+        {{ form.as_table}}
+    </table>
+
+    <input type="reset" value="Limpiar">
+    <input type="submit" value="Registrar">
+
+</form>
+{% endblock contenido %}

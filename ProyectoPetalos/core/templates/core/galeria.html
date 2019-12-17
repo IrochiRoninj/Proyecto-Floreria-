@@ -1,98 +1,37 @@
 {% extends "core/base.html" %} {% block titulo %} Galeria de Flores - Floreria Petalos {% endblock titulo %} {% load static %} {% block contenido %}
+
 <h1 class="text-center display-4 my-4 ">Galeria Floreria Petalos</h1>
 
-<div class="container">
-    <div class="card-columns">
+{% for f in lista %}
 
-        <div class="card" style="width: 18rem; height: 10rem;">
-            <img src="{% static 'core/img/21.jpg' %}" style="width: 280px;height: 150px;" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Ramo de Novia</h5>
-                <p class="card-text">Hermoso ramo de novia compuesto lisiantum, craspedias y fino follaje de acompañamiento.</p>
-                <h5>
-                    <p style="text-align: center;">$15.990</p>
-                </h5>
+
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 mix sale rounded" style="display: inline-block; padding: 20px; margin-left: 100px; " data-bound="">
+
+    <div class="single_product" style="border:1px solid saddlebrown; padding-bottom: 10px;">
+
+        <center>
+            <div class="product_image" style="padding-top: 10px">
+                <img src="{{f.imagen.url}}" style="width:150px; height: 150px; border-image: 2px; text-align: center;" class="rounded">
+                <h3>{{f.name}}</h3>
+                <div class="new_badge" style="text-align: center;">{{f.descripcion}}</div>
+                <div class="box-content" style="text-align: center;">
+                    <a href="{% url 'AGREGAR_CARRO' f.name %}"><i style="padding: 10px;" class="fa fa-cart-plus"></i></a>
+                </div>
+
             </div>
-            <div class="card-body">
-                <a href="#" class="card-link">Añadir al Carrito</a>
-            </div>
+
+        </center>
+
+        <div class="product_btm_text" style="text-align: center;">
+
+
+            <h3 class="price" style="color:darkgreen; size: 50pxpx;">${{f.precio}}</h3>
         </div>
 
-        <div class="card" style="width: 18rem; height: 10rem;">
-            <img src="{% static 'core/img/2.jpg' %}" style="width: 280px;height: 150px;" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Caja 12 rosas ecuatorianas</h5>
-                <p class="card-text">Fina caja con 12 rosas rosadas ecuatorianas, desespinadas, tallo largo.</p>
-                <h5>
-                    <p style="text-align: center;">$24.990</p>
-                </h5>
-            </div>
-            <div class="card-body">
-                <a href="#" class="card-link">Añadir al Carrito</a>
-            </div>
-        </div>
-
-        <div class="card" style="width: 18rem; height: 10rem;">
-            <img src="{% static 'core/img/3.jpg' %}" style="width: 280px;height: 150px;" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Caja 6 rosas blancas y rojas</h5>
-                <p class="card-text">Fina caja con 6 rosas ecuatorianas , desespinadas, tallo largo,insertadas en acuapic.</p>
-                <h5>
-                    <p style="text-align: center;">$17.900</p>
-                </h5>
-            </div>
-            <div class="card-body">
-                <a href="#" class="card-link">Añadir al Carrito</a>
-            </div>
-        </div>
-
-        <div class="card" style="width: 18rem; height: 10rem;">
-            <img src="{% static 'core/img/4.jpg' %}" style="width: 280px;height: 150px;" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Caja 12 rosas roja y blanca</h5>
-                <p class="card-text">Fina caja con 12 rosas ecuatorianas,insertadas en acuapic.</p>
-                <h5>
-                    <p style="text-align: center;">$25.990</p>
-                </h5>
-            </div>
-            <div class="card-body">
-                <a href="#" class="card-link">Añadir al Carrito</a>
-            </div>
-        </div>
-
-        <div class="card" style="width: 18rem; height: 10rem;">
-            <img src="{% static 'core/img/5.jpg' %}" style="width: 280px;height: 150px;" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Caja 6 rosas blancas</h5>
-                <p class="card-text">Fina caja con 6 rosas ecuatorianas , desespinadas, tallo largo, insertadas en acuapic.</p>
-                <h5>
-                    <p style="text-align: center;">$16.500</p>
-                </h5>
-            </div>
-            <div class="card-body">
-                <a href="#" class="card-link">Añadir al Carrito</a>
-            </div>
-        </div>
-
-        {% for f in lista %}
-        <div class="card" style="width: 18rem; height: 10rem;">
-            <img src="{{f.imagen.url}}" style="width: 280px;height: 150px;" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{f.name}}</h5>
-                <p class="card-text">{{f.descripcion}} </p>
-                <h5>
-                    <p style="text-align: center;">${{f.precio}}</p>
-                </h5>
-            </div>
-            <div class="card-body">
-                <a href="{% url 'AGREGAR_CARRO' f.name %}" class="card-link">Añadir al Carrito</a>
-            </div>
-        </div>
-        {% endfor %}
     </div>
+
 </div>
 
-<h1>{{msg}}</h1>
-
-
-{% endblock contenido %}
+{% endfor %} {% endblock contenido %}
