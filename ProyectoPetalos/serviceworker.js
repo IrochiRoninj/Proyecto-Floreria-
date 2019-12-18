@@ -1,8 +1,6 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
     '/',
-    '/static/core/css/estilos.css',
-    '/static/core/img/logo-floreria.png',
 ];
 
 self.addEventListener('install', function(event) {
@@ -21,7 +19,7 @@ self.addEventListener('fetch', function(event) {
         fetch(event.request)
         .then(function(result) {
             return caches.open(CACHE_NAME)
-                .them(function(c) {
+                .then(function(c) {
                     c.put(event.request.url, result.clone());
                     return result;
                 })
