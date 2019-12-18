@@ -1,6 +1,10 @@
 from django.contrib import admin
 from django.urls import path,include #agregar libreria "include"
 from .views import *
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('flores', FloresViewSet)
 
 urlpatterns = [
     path('',index,name='HOME'), #renderizar pag index
@@ -16,5 +20,7 @@ urlpatterns = [
     path('carro_menos/<id>/',carro_compras_menos,name='CARRO_MENOS'),
     path('grabar_carro/',grabar_carro,name="GRABAR_CARRO"),
     path('formulario/',formulario,name='FORMI'),
-    path('vacir_carrito/',vacio_carrito,name='VACIARCARRITO')
+    path('vacir_carrito/',vacio_carrito,name='VACIARCARRITO'),
+    path('api/', include(router.urls)),
+    
 ]

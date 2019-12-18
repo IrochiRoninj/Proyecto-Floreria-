@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
+{% load pwa %}
+{% progressive_web_app_meta %}
+
 {% load static %}
 
 <head>
@@ -11,7 +15,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link  rel="stylesheet" href="{% static 'css/estilos.css' %}" type="text/css" >
     <title>
-        {% block titulo %} {% endblock titulo %}
+
+{% block titulo %}
+        
+{% endblock titulo %}
     </title>
 </head>
 
@@ -46,15 +53,17 @@
                     <a class="nav-link" href="{% url 'CARRITO' %}">Carrito de Compras</a>
                 </li>
                 {% endif %}
-            </ul>
-            {% if user.is_authenticated %}
+                
+                {% if user.is_authenticated %}
             <form class="form-inline my-2 my-lg-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="{% url 'CERRAR' %}">Cerrar Sesion</a>
+                    <a style="color: red;" class="nav-link" href="{% url 'CERRAR' %}">Cerrar Sesion</a>
                 </li>
                 {% endif %}}
+            </ul>
+            
                 <li>
-                <b>Bienvenido {{ user.username }}</b>
+                <b style="color: green;">Bienvenido {{ user.username }}</b>
                 </li>
             </form>
             

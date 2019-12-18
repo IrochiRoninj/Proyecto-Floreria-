@@ -14,17 +14,17 @@
                 <td><input type="password" name="txtPass"></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" value="Ingresar"></td>
+                <td colspan="2"><input style="text-aling: center;" class="btn btn-success" type="submit" value="Ingresar"></td>
             </tr>
 
         </table>
     </form>
-    <div style="text-align: center;">
+</div>
+<div style="text-align: center;">
         <form name="formulario" action="">
-            <a href="{% url 'social:begin' 'facebook' %}">Iniciar Sesion Con Facebook</a>
+            <a class="btn btn-primary" href="{% url 'social:begin' 'facebook' %}">Iniciar Sesion Con Facebook</a>
         </form>
     </div>
-</div>
 <h1>{{msg}}</h1>
 
 

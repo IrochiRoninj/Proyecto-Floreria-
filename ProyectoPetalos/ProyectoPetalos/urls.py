@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('core.urls')),
     path('oauth/',include('social_django.urls',namespace='social')),
+    path('', include('pwa.urls')),
 ]
 
 if settings.DEBUG:

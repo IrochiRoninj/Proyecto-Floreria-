@@ -7,14 +7,14 @@ from django.http import HttpResponse
 import datetime
 from .clases import elemento
 
+#rest_framework
+from rest_framework import viewsets
+from .serializers import FloresSerializer
+
 # Create your views here.
 @login_required(login_url='/login/')
 def index(request):
     return render(request,'core/index.html')
-
-def registro_usuario (request):
-    
-    return render(request,'core/registrar.html')
 
 @login_required(login_url='/login/')
 def galeria(request):
@@ -57,7 +57,7 @@ def login(request):
     return render(request,'core/login.html')
 
 def login_iniciar(request):
-    
+    msg=''
     if request.POST:
         u=request.POST.get("txtUsuario")
         p=request.POST.get("txtPass")
@@ -77,7 +77,7 @@ def cerrar_sesion(request):
 
 @login_required(login_url='/login/')
 def carrito(request):
-    x=request.session["carritox"]
+    x=request.session["carritox"] = []
     suma=0
     for item in x:
         suma=suma+int(item["total"])
@@ -174,6 +174,10 @@ def vacio_carrito(request):
     request.session["carro"]=""
     x=request.session.get("carro","")
     return render(request,"core/carrito.html",{'x':x})
+
+class FloresViewSet(viewsets.ModelViewSet):
+    queryset = Flores.objects.all()
+    serializer_class = FloresSerializer
 
 #####################################################################
 def isset(variable):

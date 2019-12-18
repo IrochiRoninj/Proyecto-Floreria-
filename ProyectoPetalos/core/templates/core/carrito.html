@@ -2,16 +2,22 @@
 
 <!-- sector del menu -->
 <h1 class="text-center display-4 my-4 ">Carrito de Compras</h1>
+
 <center style="padding: 25px;">
+
     <div class="container">
+
         <table border="1">
+
             <tr>
                 <td>Nombre</td>
                 <td>Precio</td>
                 <td>Cantidad</td>
                 <td>Total</td>
             </tr>
+
             {% for f in x %}
+
             <tr>
                 <td>{{f.nombre}}</td>
                 <td>{{f.precio}}</td>
@@ -22,7 +28,9 @@
                     <input class="btn btn-danger" type="button" value="-" onclick="javascript:location.href='{% url 'CARRO_MENOS' f.nombre %}'">
                 </td>
             </tr>
+
             {% endfor %}
+
             <tr>
                 <td colspan="3">Total</td>
                 <td>{{total}}</td>
@@ -31,7 +39,9 @@
                     <input class="btn btn-dark" type="button" value="Vaciar Carrito" onclick="javascript:location.href='{% url 'VACIARCARRITO' %}'">
                 </td>
             </tr>
+
         </table>
+        
     </div>
     {{mensaje}}
 </center>
